@@ -3,8 +3,6 @@ import Link from "next/link";
 import Dashnav from "../components/Dashnav";
 import Leftbar from "../components/Leftbar";
 import Head from "next/head";
-import DashboardSummary from "../components/DashboardSummary";
-import Setting from "../components/Setting";
 import { getSocket } from "@/utils/socket";
 
 export default function Admin() {

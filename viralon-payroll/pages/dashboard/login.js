@@ -115,15 +115,7 @@ export default function LoginPage() {
                       SIGN IN
                     </button>
 
-                    {/* === NEW: link to salesman registration === */}
-                    {/* <p className="mt-3">
-                      <small>
-                        Need an account?{" "}
-                        <Link href="/dashboard/register-sales" className="text-primary">
-                          Create Sales Account
-                        </Link>
-                      </small>
-                    </p> */}
+                
                   </div>
                 </form>
               </div>

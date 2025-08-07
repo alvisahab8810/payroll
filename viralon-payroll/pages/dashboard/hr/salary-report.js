@@ -53,7 +53,7 @@ export default function SalaryReport() {
             <div className="container-salary ">
               {/* Header */}
               <div className="main-row-bx1 mt-3 d-flex justify-content-between align-items-center mb-4">
-                <h2 className="fw-bold">Monthly Salary Report</h2>
+                <h2 className="fw-bold text-white">Monthly Salary Report</h2>
                 <button
                   className="btn bg-white text-dark fw-bold "
                   onClick={() => window.print()}

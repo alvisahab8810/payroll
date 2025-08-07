@@ -43,10 +43,10 @@ const DateTimeGreeting = ({ name = "Admin" }) => {
   return (
     <div className="date-time-bx">
       <div className="mr-5">
-        <div className="text-mute fw-light">{formattedDate}</div>
+        <div className="text-mute fw-light text-dark">{formattedDate}</div>
          <div className="fs-6 fw-bold">{formattedTime}</div>
       </div>
-      <h5 class="fw-bold">{greeting}, {name}! </h5>
+      <h5 class="fw-bold text-dark">{greeting}, {name}! </h5>
     </div>
   );
 };

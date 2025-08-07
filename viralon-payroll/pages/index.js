@@ -190,7 +190,7 @@ const [today, setToday] = useState("");
                             </span>
                           </div>
                           <hr />
-                          <p className="mb-2">
+                          <p className="mb-2 text-dark">
                             Total Employees: <strong>{summary.total}</strong>
                           </p>
                           <div className="progress mb-3" style={{ height: "8px" }}>

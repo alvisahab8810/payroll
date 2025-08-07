@@ -335,6 +335,7 @@
 
 .step-label {
   font-size: 14px;
+  color: black;;
 }
 
 .career-response
@@ -473,7 +474,7 @@ button.btn{
   font-size: 15px;
     cursor: pointer;
     margin-top: 15px;
-    padding: 15px 20px;
+    padding: 10px 20px;
     width:100%;
         /* background: linear-gradient(to right, rgb(54, 209, 220), rgb(91, 134, 229)); */
         background-color: black;
@@ -569,7 +570,8 @@ button.btn{
     border-radius: 50%;
     border: none;
     padding: 0;
-    background: linear-gradient(90deg, #FF6F61 29%, #FBA065 95%);
+    /* background: linear-gradient(90deg, #FF6F61 29%, #FBA065 95%); */
+        background: linear-gradient(60deg, #5A57FB 29%, #02EBAD 95%);
     color: white;
     display: flex
 ;
@@ -584,7 +586,14 @@ button.btn{
 .emp-dashboard
 .nav>li>a:hover, .nav>li>a:focus {
     text-decoration: none;
-    background-color: black;
+       background-color: #1cbec461;
+}
+
+.emp-dashboard
+.nav>li>a:hover, .nav>li>a:hover {
+    text-decoration: none;
+       background-color: #1cbec461!important;
+       color:white!important;
 }
 .emp-dashboard .nav>li>a{
     padding: 6px 10px;
@@ -603,6 +612,7 @@ button.btn{
   font-size: 14px;
     font-weight: normal;
     padding: 10px 15px !important;
+
 }
 
 .balance-section > div{
@@ -612,4 +622,83 @@ button.btn{
 
 .emp-dashboard .modal-content{
   color:black;
+}
+
+section.content {
+ 
+    background: #f5f5f5!important;
+}
+
+.items-home .card-body{
+  color:black;
+}
+
+.emp-dashboard .offcanvas{
+  color:black; 
+}
+
+
+
+
+
+
+
+
+.check-out-button {
+  position: relative;
+  display: inline-block;
+  /* background-color: #007bff; */
+  /* color: #fff; */
+  /* padding: 8px 12px; */
+  /* border-radius: 6px; */
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.2s ease-in-out;
+
+
+  font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+    padding: 10px 20px;
+    width:100%;
+        /* background: linear-gradient(to right, rgb(54, 209, 220), rgb(91, 134, 229)); */
+        background-color: black;
+            box-shadow: -1px 1px 8px 0px #ff6f61 !important;
+}
+
+.check-out-button:hover {
+  background-color: #0056b3;
+}
+
+.elapsed-time {
+  z-index: 1;
+  position: relative;
+  color:white;
+}
+
+.hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 2;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.check-out-button:hover .hover-overlay {
+  opacity: 1;
+}
+
+
+.download-btn{
+      background: linear-gradient(60deg, #5A57FB 29%, #02EBAD 95%);
 }

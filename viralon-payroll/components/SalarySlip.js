@@ -418,7 +418,7 @@ export default function MySalarySlips() {
 
   return (
     <div className="container-salry">
-      <h4 className="mb-3 fw-bold">My Salary Slips</h4>
+      <h4 className="mb-3 fw-bold text-dark">My Salary Slips</h4>
 
       {/* Filters */}
       <div className="filters-bx row g-2 mb-3 mt-3">
@@ -522,7 +522,7 @@ export default function MySalarySlips() {
                       <td className="text-end">₹{slip.netPay}</td>
                       <td className="text-center">
                         <button
-                          className="btn btn-primary btn-sm"
+                          className="download-btn btn"
                           disabled={downloadingId === slip._id} // ✅ Disable during download
                           onClick={() => downloadSlip(slip._id)}
                         >

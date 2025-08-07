@@ -1109,6 +1109,12 @@ export default function EmployeeDashboard() {
 
     const [today, setToday] = useState("");
 
+  const handleFromChange = (e) => {
+    const selectedDate = e.target.value;
+    setFrom(selectedDate);
+    setTo(selectedDate); // Auto-fill the 'to' date
+  };
+
   useEffect(() => {
     if (!employee || !employee._id) return;
 
@@ -1557,18 +1563,9 @@ export default function EmployeeDashboard() {
               {employee.firstName} {employee.lastName}
             </h6>
 
-            {/* View Profile Button */}
-            {/* <button
-              className={`profile-btn  ${
-                activeTab === "profile" ? "profile-btn" : "profile-btn"
-              }`}
-              onClick={() => setActiveTab("profile")}
-            >
-              <i className="fas fa-user me-2" style={{ color: "#fff" }}></i>{" "}
-              View My Profile
-            </button> */}
+           
 
-            <div className="text-muted small">
+            {/* <div className="text-muted small">
               {(() => {
                 const punches = attendance?.punches || [];
                 const last = punches[punches.length - 1];
@@ -1596,7 +1593,40 @@ export default function EmployeeDashboard() {
                   );
                 }
               })()}
-            </div>
+            </div> */}
+
+
+
+            <div className="text-muted small">
+  {(() => {
+    const punches = attendance?.punches || [];
+    const last = punches[punches.length - 1];
+    
+    if (!attendance || punches.length === 0 || (last && last.out)) {
+      // No active punch
+      return (
+        <button
+          className="text-white check-in-btn"
+          onClick={handleLogin}
+        >
+          {punches.length === 0 ? "Check-in" : "Check-in Again"}
+        </button>
+      );
+    } else {
+      // Active punch
+      return (
+        <div
+          className="check-out-button "
+          onClick={() => handleLogout(false)}
+        >
+          <span className="elapsed-time">⏱ {punchElapsed || "0h 0m 0s"}</span>
+          <div className="hover-overlay">Click to Check-out</div>
+        </div>
+      );
+    }
+  })()}
+</div>
+
           </div>
 
           {/* Tab Nav */}
@@ -1890,7 +1920,7 @@ export default function EmployeeDashboard() {
                 <div className="card shadow border-0 rounded-4 p-4">
                   {/* Header */}
                   <div className="d-flex justify-content-between align-items-center mb-3">
-                    <h5 className="fw-bold  mb-0">
+                    <h5 className="fw-bold  mb-0 text-dark">
                       Upcoming Holidays ({new Date().getFullYear()})
                     </h5>
                     <span className="badge bg-light text-primary fw-semibold">
@@ -1986,7 +2016,7 @@ export default function EmployeeDashboard() {
 
           {activeTab === "attendance" && (
             <div>
-              <h4 className="fw-bold mb-3">Leave & Attendance</h4>
+              <h4 className="fw-bold mb-3 text-dark">Leave & Attendance</h4>
 
               <div className="card shadow-sm p-4 border-0 rounded-3">
                 <h5 className="mb-3 fw-semibold text-primary">
@@ -2001,7 +2031,7 @@ export default function EmployeeDashboard() {
                       </div>
                       <div>
                         <small className="text-muted">Login Time</small>
-                        <div className="fw-semibold">
+                        <div className="fw-semibold text-dark">
                           {new Date(attendance.loginTime).toLocaleTimeString()}
                         </div>
                       </div>
@@ -2058,7 +2088,7 @@ export default function EmployeeDashboard() {
             <div>
               {/* Top Title + Apply Button */}
               <div className="d-flex justify-content-between align-items-center mb-3">
-                <h4 className="fw-bold">Leave Summary</h4>
+                <h4 className="fw-bold text-dark">Leave Summary</h4>
                 <button
                   className="btn btn-primary"
                   onClick={() => setShowLeaveForm(true)}
@@ -2157,7 +2187,7 @@ export default function EmployeeDashboard() {
                   role="dialog"
                 >
                   <div className="offcanvas-header p-3 border-bottom">
-                    <h5 className="offcanvas-title">Apply Leave</h5>
+                    <h5 className="offcanvas-title text-dark">Apply Leave</h5>
                     <button
                       type="button"
                       className="btn-close"
@@ -2167,7 +2197,7 @@ export default function EmployeeDashboard() {
 
                   <div className="offcanvas-body p-3">
                     <div className="mb-3">
-                      <label className="form-label">Leave Type</label>
+                      <label className="form-label text-dark">Leave Type</label>
                       <select
                         className="form-select"
                         value={leaveType}
@@ -2179,9 +2209,9 @@ export default function EmployeeDashboard() {
                       </select>
                     </div>
 
-                    <div className="mb-3 d-flex gap-2">
+                    {/* <div className="mb-3 d-flex gap-2">
                       <div className="flex-fill">
-                        <label className="form-label">From</label>
+                        <label className="form-label text-dark">From</label>
                         <input
                           type="date"
                           className="form-control"
@@ -2198,7 +2228,43 @@ export default function EmployeeDashboard() {
                           onChange={(e) => setTo(e.target.value)}
                         />
                       </div>
-                    </div>
+                    </div> */}
+
+
+
+                    <div className="mb-3 d-flex gap-2">
+      <div className="flex-fill">
+        <label className="form-label text-dark">From</label>
+        <input
+          type="date"
+          className="form-control custom-date-input"
+          value={from}
+          onChange={handleFromChange}
+        />
+      </div>
+      <div className="flex-fill">
+        <label className="form-label text-dark">To</label>
+        <input
+          type="date"
+          className="form-control custom-date-input"
+          value={to}
+          onChange={(e) => setTo(e.target.value)}
+        />
+      </div>
+
+      {/* <style jsx>{`
+        .custom-date-input {
+          position: relative;
+          background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23666" class="bi bi-calendar" viewBox="0 0 16 16"%3E%3Cpath d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v1H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM0 14V5h16v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z"%3E%3C/path%3E%3C/svg%3E');
+          background-repeat: no-repeat;
+          background-position: right 10px center;
+          background-size: 16px 16px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        }
+      `}</style> */}
+    </div>
 
                     {/* Half-day + Emergency */}
                     <div className="form-check mb-2">
@@ -2210,7 +2276,7 @@ export default function EmployeeDashboard() {
                         checked={isHalfDay}
                         onChange={(e) => setIsHalfDay(e.target.checked)}
                       />
-                      <label htmlFor="halfDayChk" className="form-check-label">
+                      <label htmlFor="halfDayChk" className="form-check-label text-dark">
                         Request Half-Day
                       </label>
                     </div>
@@ -2225,7 +2291,7 @@ export default function EmployeeDashboard() {
                       />
                       <label
                         htmlFor="emergencyChk"
-                        className="form-check-label"
+                        className="form-check-label text-dark"
                       >
                         Emergency Leave
                       </label>
@@ -2243,7 +2309,7 @@ export default function EmployeeDashboard() {
 
                     {policyCheck?.justificationRequired && (
                       <div className="mb-3">
-                        <label className="form-label">
+                        <label className="form-label text-dark">
                           Justification (required)
                         </label>
                         <textarea
@@ -2257,7 +2323,7 @@ export default function EmployeeDashboard() {
 
                     {policyCheck?.medicalCertRequired && (
                       <div className="mb-3">
-                        <label className="form-label">
+                        <label className="form-label text-dark">
                           Medical Certificate
                         </label>
                         <input
@@ -2310,7 +2376,7 @@ export default function EmployeeDashboard() {
 
               {/* Leave Requests Table */}
               <div className="card p-4 shadow-sm border-0 rounded-3">
-                <h5 className="fw-semibold mb-3">Leave Requests</h5>
+                <h5 className="fw-semibold mb-3 text-dark">Leave Requests</h5>
                 {leaveRequests.length === 0 ? (
                   <div className="text-center py-5">
                     <img
@@ -2374,7 +2440,7 @@ export default function EmployeeDashboard() {
             <h4>Investments Section Coming Soon...</h4>
           )}
           {activeTab === "documents" && (
-            <h4>Documents Section Coming Soon...</h4>
+            <h4 className="text-dark">Documents Section Coming Soon...</h4>
           )}
         </div>
       </div>

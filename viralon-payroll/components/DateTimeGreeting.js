@@ -42,11 +42,24 @@ const DateTimeGreeting = ({ name = "Admin" }) => {
 
   return (
     <div className="date-time-bx">
-      <div className="mr-5">
+
+      <h5 class="admin-main-heading">{greeting}, {name}! </h5>
+
+      <div className="mr-5 mobile-none">
+
         <div className="text-mute fw-light text-dark">{formattedDate}</div>
          <div className="fs-6 fw-bold">{formattedTime}</div>
       </div>
-      <h5 class="fw-bold text-dark">{greeting}, {name}! </h5>
+          <button
+        className="mobile-burger btn btn-outline-primary d-md-none "
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasLeft"
+        aria-controls="offcanvasLeft"
+      >
+        <i className="zmdi zmdi-menu"></i>
+      </button>
+      
     </div>
   );
 };

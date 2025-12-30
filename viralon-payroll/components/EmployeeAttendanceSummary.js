@@ -813,7 +813,7 @@ export default function EmployeeAttendanceCalendar() {
   const lastOut = selectedRecord ? getLastOut(selectedRecord) : null;
 
   return (
-    <div className="mt-4 border rounded p-3 bg-white">
+    <div className="table-responsive mt-4 border rounded p-3 bg-white">
       {/* header / month picker */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h5 className="fw-bold mb-0 text-dark">
@@ -822,13 +822,13 @@ export default function EmployeeAttendanceCalendar() {
 
         <div className="position-relative">
           <div
-            className="btn btn-outline-secondary d-flex align-items-center gap-2 px-3 py-2"
+            className="btn btn-outline-secondary d-flex align-items-center gap-2 px-3 py-2 download-btn"
             onClick={() => setShowCalendar((prev) => !prev)}
             style={{
               borderRadius: "8px",
               cursor: "pointer",
               fontSize: "0.9rem",
-              color: "#333",
+              color: "#fff",
             }}
           >
             <FaCalendarAlt />
@@ -904,7 +904,7 @@ export default function EmployeeAttendanceCalendar() {
       `}</style>
 
       {/* summary tiles */}
-      <div className="row g-3 mb-3">
+      <div className="row g-3 mb-3 summary-tiles">
         {[
           { label: "Payable Days", value: summary.payable, className: "text-primary" },
           {

@@ -5,6 +5,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Dashnav from "../../../../components/Dashnav";
 import Leftbar from "../../../../components/Leftbar";
+import LeftbarMobile from "@/components/LeftbarMobile";
 
 export default function EmployeeList() {
   const [employees, setEmployees] = useState([]);
@@ -48,13 +49,14 @@ export default function EmployeeList() {
       <div className="main-nav">
         <Dashnav />
         <Leftbar />
+        <LeftbarMobile/>
 
         <section className="content home">
           <div className="block-header">
             <div className="row ptb-50 main-row-bx1 mt-3">
               <div className="col-lg-7 col-md-6 col-sm-12">
                 <h2>
-                  Employee List
+                  Employee List<br/>
                   <small className="text-white">Welcome to Viralon </small>
                 </h2>
               </div>

@@ -1,10 +1,15 @@
+// =========================== this is old schema ====================
+
+
+
+
 
 // // models/payroll/Attendance.js
 // import mongoose from "mongoose";
 
 // const punchSchema = new mongoose.Schema(
 //   {
-//     in:  { type: Date, required: true },
+//     in: { type: Date, required: true },
 //     out: { type: Date, default: null },
 //   },
 //   { _id: false }
@@ -21,11 +26,11 @@
 //     required: true,
 //   },
 
-//   // Legacy fields (keep so nothing breaks)
+//   // Legacy fields (still kept for backward compatibility)
 //   loginTime: { type: String },
 //   logoutTime: { type: String },
 
-//   // New multi-punch support
+//   // Multi-punch support
 //   punches: { type: [punchSchema], default: [] },
 
 //   totalWorkedMinutes: { type: Number, default: 0 },
@@ -33,7 +38,11 @@
 //   longestBreakMinutes: { type: Number, default: 0 },
 //   lunchBreakExceeded: { type: Boolean, default: false }, // >50m break
 
-//   // Existing summary flags
+//   // Late Arrival Tracking
+//   lateMark: { type: Boolean, default: false }, // <-- Added field for late arrival
+  
+
+//   // Summary flags
 //   isHalfDay: { type: Boolean, default: false },
 //   status: {
 //     type: String,
@@ -47,15 +56,15 @@
 //   },
 //   regularized: { type: Boolean, default: false },
 
+//   // Geo-Location tracking
 //   loginLocation: {
-//   latitude: Number,
-//   longitude: Number,
-// },
-// logoutLocation: {
-//   latitude: Number,
-//   longitude: Number,
-// },
-
+//     latitude: Number,
+//     longitude: Number,
+//   },
+//   logoutLocation: {
+//     latitude: Number,
+//     longitude: Number,
+//   },
 // });
 
 // attendanceSchema.index({ employee: 1, date: 1 }, { unique: true });
@@ -64,6 +73,19 @@
 //   mongoose.model("Attendance", attendanceSchema);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+// ==========================================this is current schema ===============================
 
 
 // models/payroll/Attendance.js
@@ -80,7 +102,7 @@ const punchSchema = new mongoose.Schema(
 const attendanceSchema = new mongoose.Schema({
   employee: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Employee",
+    ref: "Employee", // 🔹 reference the new Employee model
     required: true,
   },
   date: {
@@ -88,7 +110,7 @@ const attendanceSchema = new mongoose.Schema({
     required: true,
   },
 
-  // Legacy fields (still kept for backward compatibility)
+  // Legacy fields
   loginTime: { type: String },
   logoutTime: { type: String },
 
@@ -98,11 +120,10 @@ const attendanceSchema = new mongoose.Schema({
   totalWorkedMinutes: { type: Number, default: 0 },
   totalBreakMinutes: { type: Number, default: 0 },
   longestBreakMinutes: { type: Number, default: 0 },
-  lunchBreakExceeded: { type: Boolean, default: false }, // >50m break
+  lunchBreakExceeded: { type: Boolean, default: false },
 
   // Late Arrival Tracking
-  lateMark: { type: Boolean, default: false }, // <-- Added field for late arrival
-  
+  lateMark: { type: Boolean, default: false },
 
   // Summary flags
   isHalfDay: { type: Boolean, default: false },

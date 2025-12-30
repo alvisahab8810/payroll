@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 // for select dropdown -----
 
 import { useState } from "react";
+import LeftbarMobile from "@/components/LeftbarMobile";
 
 
 export default function NewCustomers() {
@@ -112,6 +113,7 @@ const handleSubmit = async (e) => {
       </Head>
 
       <div className="main-nav">
+        <LeftbarMobile/>
         <Dashnav />
         <Leftbar />
 
@@ -120,7 +122,7 @@ const handleSubmit = async (e) => {
             <div className="main-row-bx1 row ptb-50 mt-3">
               <div className="col-lg-7 col-md-6 col-sm-12">
                 <h2>
-                  Add Employee
+                  Add Employee<br/>
                   <small className="text-white">Welcome to Viralon</small>
                 </h2>
               </div>
@@ -138,7 +140,7 @@ const handleSubmit = async (e) => {
             </div>
 
             <div className="admin">
-              <div className="container mt-4">
+              <div className="container-pad mt-4">
                 <form onSubmit={handleSubmit}>
                   <div className="row mb-4">
                     <div className="col-12">

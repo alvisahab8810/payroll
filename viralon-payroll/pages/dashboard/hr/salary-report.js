@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import Dashnav from "@/components/Dashnav";
 import Leftbar from "@/components/Leftbar";
+import LeftbarMobile from "@/components/LeftbarMobile";
 // Utility to format currency
 const formatCurrency = (amount) =>
   `₹${amount.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`;
@@ -45,6 +46,7 @@ export default function SalaryReport() {
       </Head>
 
       <div className="main-nav">
+        <LeftbarMobile/>
         <Dashnav />
         <Leftbar />
 
@@ -69,7 +71,7 @@ export default function SalaryReport() {
                 </div>
               ) : (
                 <div className="table-responsive shadow-sm rounded">
-                  <table className="table table-bordered table-hover align-middle">
+                  <table className="table table-bordered table-hover align-middle text-nowrap">
                     <thead className="table-light">
                       <tr>
                         <th>Employee</th>

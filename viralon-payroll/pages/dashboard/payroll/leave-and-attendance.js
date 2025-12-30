@@ -7,6 +7,7 @@ import Link from "next/link";
 import Dashnav from "@/components/Dashnav";
 import Leftbar from "@/components/Leftbar";
 import { toast } from "react-toastify";
+import LeftbarMobile from "@/components/LeftbarMobile";
 
 export default function LeaveAttendanceOverview() {
   const [search, setSearch] = useState("");
@@ -146,6 +147,7 @@ export default function LeaveAttendanceOverview() {
       <div className="main-nav">
         <Dashnav />
         <Leftbar />
+        <LeftbarMobile/>
 
         <section className="content home">
           <div className="block-header">

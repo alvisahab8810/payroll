@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 // import { useEffect, useMemo, useState } from "react";
 
 // const MONTH_NAMES = [
@@ -288,16 +279,23 @@
 //   );
 // }
 
-
-
-
-
-
-
-
 import { useEffect, useMemo, useState } from "react";
 
-const MONTH_NAMES = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const MONTH_NAMES = [
+  "",
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
 function normalizeSlipPeriod(slip) {
   let yr = slip.year;
@@ -330,7 +328,10 @@ function normalizeSlipPeriod(slip) {
   return {
     monthNum,
     yearNum,
-    display: monthNum && yearNum ? `${MONTH_NAMES[monthNum]} ${yearNum}` : slip.month || "—",
+    display:
+      monthNum && yearNum
+        ? `${MONTH_NAMES[monthNum]} ${yearNum}`
+        : slip.month || "—",
   };
 }
 
@@ -418,7 +419,7 @@ export default function MySalarySlips() {
 
   return (
     <div className="container-salry">
-      <h4 className="mb-3 fw-bold text-dark">My Salary Slips</h4>
+      <h4 className="mb-3 fw-bold text-dark mt-0">My Salary Slips</h4>
 
       {/* Filters */}
       <div className="filters-bx row g-2 mb-3 mt-3">
@@ -479,19 +480,18 @@ export default function MySalarySlips() {
           />
         </div>
 
-        <div className="col-auto">
-        <button
-  className="circle-btn d-flex align-items-center"
-  onClick={() => {
-    setFilterMonth("");
-    setFilterYear("");
-    setCurrentPage(1);
-  }}
-  title="Clear Filters"
->
-  <i className="fas fa-times-circle"></i>
-</button>
-
+        <div className="col-auto mobile-none">
+          <button
+            className="circle-btn d-flex align-items-center"
+            onClick={() => {
+              setFilterMonth("");
+              setFilterYear("");
+              setCurrentPage(1);
+            }}
+            title="Clear Filters"
+          >
+            <i className="fas fa-times-circle"></i>
+          </button>
         </div>
       </div>
 
@@ -526,7 +526,9 @@ export default function MySalarySlips() {
                           disabled={downloadingId === slip._id} // ✅ Disable during download
                           onClick={() => downloadSlip(slip._id)}
                         >
-                          {downloadingId === slip._id ? "Downloading..." : "Download Slip"}
+                          {downloadingId === slip._id
+                            ? "Downloading..."
+                            : "Download Slip"}
                         </button>
                       </td>
                     </tr>
@@ -540,16 +542,23 @@ export default function MySalarySlips() {
           {totalPages > 1 && (
             <nav className="mt-2">
               <ul className="pagination pagination-sm justify-content-center mb-0">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                  <li
-                    key={p}
-                    className={`page-item ${currentPage === p ? "active" : ""}`}
-                  >
-                    <button className="page-link" onClick={() => handlePageChange(p)}>
-                      {p}
-                    </button>
-                  </li>
-                ))}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (p) => (
+                    <li
+                      key={p}
+                      className={`page-item ${
+                        currentPage === p ? "active" : ""
+                      }`}
+                    >
+                      <button
+                        className="page-link"
+                        onClick={() => handlePageChange(p)}
+                      >
+                        {p}
+                      </button>
+                    </li>
+                  )
+                )}
               </ul>
             </nav>
           )}

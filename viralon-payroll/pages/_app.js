@@ -11,6 +11,9 @@ import Script from "next/script";
 import { SessionProvider } from "next-auth/react";
 
 // import { Toaster } from "react-hot-toast";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function MyApp({ Component, pageProps }) {
   return (
     <>
@@ -59,6 +62,13 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
 
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+          rel="stylesheet"
+        />
+
         <title>Payroll - Admin Panel</title>
       </Head>
       {/* Non-Critical Scripts */}
@@ -67,30 +77,21 @@ function MyApp({ Component, pageProps }) {
         strategy="lazyOnload"
       />
       <Script src="/assets/js/jquery-3.6.0.min.js" defer></Script>
-      {/* <Script src="/assets/js/jquery.appear.js" defer></Script> */}
-      {/* <Script src="/assets/js/swiper-bundle.min.js" defer></Script> */}
-      {/* <Script src="/assets/js/progress-bar.min.js" defer></Script> */}
-      {/* <Script src="/assets/js/circle-progress.js" defer></Script> */}
-      {/* <Script src="/assets/js/isotope.pkgd.min.js" defer></Script> */}
-      {/* <Script src="/assets/js/imagesloaded.pkgd.min.js" defer></Script> */}
-      {/* <Script src="/assets/js/magnific-popup.min.js" defer></Script> */}
-      {/* <Script src="/assets/js/count-to.js" defer></Script> */}
-      {/* <Script src="/assets/js/jquery.scrolla.min.js" defer></Script> */}
-      {/* <Script src="/assets/js/validnavs.js" defer></Script> */}
-      {/* <Script src="/assets/js/gsap.js" defer></Script> */}
-      {/* <Script src="/assets/js/ScrollTrigger.min.js" defer></Script> */}
-      {/* <Script src="/assets/js/horizontal-accordion-init.js" defer></Script> */}
-      {/* <Script src="/assets/js/main.js" defer></Script> */}
+
       <Script src="/assets/js/bootstrap.bundle.min.js" defer></Script>
-
-      {/* <Script src="/assets/js/ScrollSmoother.min.js" defer></Script>
-      <Script src="/assets/js/scrollTriger-init.js" defer></Script>
-      <Script src="/assets/js/cursol-hover.js" defer></Script> */}
-
-      {/* <Toaster position="top-right" /> */}
 
       <SessionProvider session={pageProps.session}>
         <Component {...pageProps} />
+
+         <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        theme="light"
+      />
       </SessionProvider>
     </>
   );
